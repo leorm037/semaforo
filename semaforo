@@ -1,0 +1,54 @@
+#!/usr/bin/python
+import sys
+import RPi.GPIO as GPIO
+
+def semaforo(cor, status):
+  if cor == "red":
+    cor = 16
+  elif cor == "yellow":
+    cor = 20
+  elif cor == "green":
+    cor = 21
+  else:
+    cor = int(cor)
+
+  if status == "on":
+    status = 1
+  elif status == "off":
+    status = 0
+  else:
+    status = int(status)
+    if status > 1:
+      status = 1
+    else:
+      status = 0
+
+  GPIO.setwarnings(False)
+  GPIO.setmode(GPIO.BCM)
+  GPIO.setup(cor,GPIO.OUT)
+  GPIO.output(cor,status)
+
+def semaforoall(status):
+  semaforo("red", status)
+  semaforo("yellow", status)
+  semaforo("green", status)
+
+if len(sys.argv) == 3:
+  if sys.argv[1] == "all":
+    if sys.argv[2] == "on":
+      semaforoall("on")
+    elif sys.argv[2] == "off":
+      semaforoall("off")
+  else:
+    semaforo(sys.argv[1], sys.argv[2])
+else:
+  print "Enter color and status"
+  print ("  Example:"
+  print ("    semaforo red on")
+  print ("    semaforo red off")
+  print ("    semaforo yellow on")
+  print ("    semaforo yellow off")
+  print ("    semaforo green on")
+  print ("    semaforo green off")
+  print ("    semaforo all on")
+  print ("    semaforo all off")
