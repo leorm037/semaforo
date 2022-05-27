@@ -19,6 +19,16 @@ Python script to turn on Traffic Light, Raspberry PI 3 or higher, using GPIO pin
       semaforo all off
 ```
 
+## Required
+- Python 3
+- python3-pigpio
+- pigpio
+- raspi-gpio
+
+```
+sudo apt install raspi-gpio pigpio python3-pigpio python3
+```
+
 ## Install
 ```
 sudo cp semaforo /usr/local/bin/semaforo
