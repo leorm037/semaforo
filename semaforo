@@ -42,8 +42,8 @@ if len(sys.argv) == 3:
   else:
     semaforo(sys.argv[1], sys.argv[2])
 else:
-  print "Enter color and status"
-  print ("  Example:"
+  print ("Enter color and status")
+  print ("  Example:")
   print ("    semaforo red on")
   print ("    semaforo red off")
   print ("    semaforo yellow on")
